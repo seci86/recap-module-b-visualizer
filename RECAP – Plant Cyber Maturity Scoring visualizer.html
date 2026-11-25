@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RECAP – Plant Cyber Maturity Scoring</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#667085;--bd:#e3e7ee;--ac:#0b6e99;--g:#1a8f5a;--a:#d98a0b;--r:#c8382f;--grid:#d5dae3;--hl:#eaf4f9;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f141a;--card:#171e27;--tx:#e6ebf2;--mu:#94a0b3;--bd:#27313e;--ac:#4cb5e0;--g:#3cc88a;--a:#f0a830;--r:#f0645a;--grid:#2e3947;--hl:#1b2a36}}
+:root[data-theme="dark"]{--bg:#0f141a;--card:#171e27;--tx:#e6ebf2;--mu:#94a0b3;--bd:#27313e;--ac:#4cb5e0;--g:#3cc88a;--a:#f0a830;--r:#f0645a;--grid:#2e3947;--hl:#1b2a36}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{width:100%;max-width:none;margin:0;padding:16px}
+h1{font-size:20px;margin:0}h2{font-size:14px;margin:0 0 10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em}
+.sub{color:var(--mu);margin:2px 0 14px}
+.grid{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr) minmax(0,1.2fr);gap:14px}
+@media(max-width:1050px){.grid{grid-template-columns:1fr 1fr}.grid>.c3{grid-column:1/-1}}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip,.tg button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:3px 10px;font-size:12px;cursor:pointer}
+.chip.on,.tg button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.pl{display:block;width:100%;text-align:left;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:8px 10px;margin-bottom:6px;cursor:pointer}
+.pl.on{background:var(--hl);border-color:var(--ac)}
+.pl .t{display:flex;justify-content:space-between;gap:8px;font-weight:600}
+.pl .m{color:var(--mu);font-size:12px}
+.bar{height:6px;border-radius:4px;background:var(--grid);margin-top:6px;overflow:hidden}.bar i{display:block;height:100%}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin-bottom:12px}
+.kp div{border:1px solid var(--bd);border-radius:8px;padding:6px 8px}.kp b{display:block;font-size:20px}.kp span{font-size:11px;color:var(--mu)}
+.cv{position:relative;height:420px}
+.tg{display:flex;gap:6px;margin-bottom:8px}
+.tbw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:480px;font-size:12.5px}
+th,td{padding:5px 6px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}th{color:var(--mu);font-weight:600}
+tr.hl td{background:var(--hl)}
+.b{display:inline-block;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap}
+.sc{display:inline-flex;gap:2px;vertical-align:middle}.sc i{width:9px;height:9px;border-radius:2px;background:var(--grid)}
+.note{font-size:12px;color:var(--mu);margin-top:10px}
+details{margin-top:14px}summary{cursor:pointer;font-weight:600}
+html{-webkit-text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+.w{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+.ar{display:none}.tot th{color:var(--tx);font-size:13px}
+@media(max-width:700px){
+.w{padding:12px max(12px,env(safe-area-inset-right)) 20px max(12px,env(safe-area-inset-left))}
+h1{font-size:18px}.sub{font-size:13px;margin-bottom:10px}
+.grid{gap:10px}.card{padding:12px}
+.chips{flex-wrap:wrap;margin:0 0 10px}
+.chip,.tg button{padding:8px 14px;font-size:13px;white-space:nowrap;min-height:36px}
+.tg button{flex:1;padding:9px 6px;white-space:normal}
+.pl{padding:10px 12px}
+.kp{grid-template-columns:repeat(3,1fr)}.kp b{font-size:17px;overflow-wrap:anywhere}
+.cv{height:370px}.note{font-size:11.5px}
+table{min-width:0}th,td{padding:7px 4px}
+.x{display:none}.ar{display:block;color:var(--mu);font-size:11px}
+.sc i{width:8px;height:8px}
+.grid>.card,.cv{min-width:0;max-width:100%}.tbw{overflow:visible}td,th{overflow-wrap:anywhere}
+}
+</style></head><body><div class="w">
+<h1>RECAP – Plant Cyber Maturity Scoring</h1>
+<p class="sub">Based on Annexure B (Plant Audit Checklist) · 15 audit parameters · weighted 0–5 score · <b>dummy data for illustration</b></p>
+<div class="grid">
+ <div class="card"><h2>Plants (ranked)</h2><div class="chips" id="chips"></div><div id="list"></div></div>
+ <div class="card"><h2 id="pn">Plant</h2><div class="kp" id="kp"></div>
+  <div class="tg"><button id="ba" class="on">By control area (10)</button><button id="bp">By parameter (15)</button></div>
+  <div class="cv"><canvas id="rc"></canvas></div>
+  <p class="note">Outer ring = 5. Dashed line = compliance threshold (4). Grey line = average of plants shown in the list. Click a point to highlight its rows in the table.</p></div>
+ <div class="card c3"><h2>Parameter-wise score</h2><div class="tbw"><table id="tb"></table></div></div>
+</div>
+<details class="card"><summary>Scoring methodology</summary>
+<p><b>Final score (0–5)</b> = Σ (weight × score) ÷ 100, where weights total 100 and each parameter is scored 0–5. Percentage = final ÷ 5.</p>
+<p><b>Per-parameter score:</b> 0 Not in place · 1 Planned / draft only · 2 Documented, not implemented · 3 Partially implemented · 4 Implemented, documents signed by CISO · 5 Verified at site, signed by CISO, reviewed periodically.</p>
+<p><b>Status:</b> ≥4 Complied · 2–3 Partially complied · ≤1 Not complied. <b>Severity of a gap:</b> Must Have scoring 0–1 = Critical, 2 = High, 3 = Medium; Should Have gaps = Low.</p>
+<p><b>Tiers:</b> L1 Initial (&lt;1.5) · L2 Basic (&lt;2.5) · L3 Intermediate (&lt;3.5) · L4 Advanced (&lt;4.5) · L5 Leading (≥4.5). <b>Gate:</b> a plant scoring 0 on any Must Have parameter is capped at L3 until that gap is closed.</p>
+<p><b>Weights</b> reflect the checklist priority (Must Have vs Should Have) and the impact of the control on OT safety: monitoring, firewall and segmentation, access control, SCADA and remote access carry the highest weights; advanced technologies (Should Have, within 1 year) carry the lowest.</p></details>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+var AREAS=["Network Segmentation","Access Control","SCADA / DCS","Physical Security","Monitoring & IR","Remote Access","Backup & OT Resilience","System Hardening","Asset Inventory","Vendor Verification"];
+// [area, parameter, weight, M=Must Have / S=Should Have]
+var Q=[[0,"Zone diagram, asset-to-zone map, OT-IT isolation",9,"M"],[0,"Network diagram, DMZ host list, data flow",6,"M"],[0,"Firewall rules, default-deny, policy",9,"M"],[0,"Minimum basic technologies in architecture",5,"M"],[0,"Advanced tech (DPI, WAF, EDR/XDR)",3,"S"],[0,"SRA/VPN config, MFA, session recording",6,"M"],[1,"Access control for all IT-OT systems",8,"M"],[2,"SCADA/DCS secure access and encryption",8,"M"],[3,"Server / control room access",4,"M"],[4,"SIEM, NTP sync and log monitoring",10,"M"],[5,"Secure remote access (JIT, MFA, isolation)",8,"M"],[6,"Backup schedule, storage, ransomware protection",7,"M"],[7,"OS / OT hardening, configuration mgmt",6,"M"],[8,"Asset inventory and critical systems list",5,"M"],[9,"Vendor / OEM verification, SBOM, EOL",6,"M"]];
+var P=[["Rajasthan Solar Park-A","Solar","Rajasthan",300,[5,4,5,4,3,5,4,5,4,5,4,5,4,4,4]],["Gujarat Wind Ridge","Wind","Gujarat",150,[4,4,3,4,2,4,4,3,5,3,4,0,3,3,4]],["Tamil Nadu Hybrid-1","Hybrid","Tamil Nadu",250,[3,3,4,3,1,3,3,3,4,3,2,3,3,2,3]],["Karnataka Solar-B","Solar","Karnataka",100,[2,3,2,2,0,2,3,2,3,2,2,3,2,2,2]],["Maharashtra BESS Hub","Storage","Maharashtra",80,[5,5,4,5,4,4,5,4,5,5,5,4,5,5,5]],["Andhra Pradesh Solar-C","Solar","Andhra Pradesh",200,[3,2,3,3,1,3,2,3,3,2,3,2,3,3,2]],["MP Wind-Hybrid","Hybrid","Madhya Pradesh",175,[1,2,1,2,0,1,2,1,2,1,1,2,1,1,2]],["UP Solar-D","Solar","Uttar Pradesh",60,[4,3,4,3,2,3,3,4,4,3,3,3,4,3,3]]];
+var TIERS=[[4.5,"L5 Leading"],[3.5,"L4 Advanced"],[2.5,"L3 Intermediate"],[1.5,"L2 Basic"],[0,"L1 Initial"]];
+var pl=P.map(function(p){var s=p[4],f=0;Q.forEach(function(q,i){f+=q[2]*s[i]});f/=100;
+ var cap=Q.some(function(q,i){return q[3]=="M"&&s[i]==0});var t=TIERS.find(function(x){return f>=x[0]});
+ if(cap&&f>=3.5)t=TIERS[2];return{n:p[0],ty:p[1],st:p[2],mw:p[3],s:s,f:f,tier:t[1],cap:cap&&f>=3.5}}).sort(function(a,b){return b.f-a.f});
+var sel=pl[0],flt="All",mode="a",hlA=-1,ch=null;
+function mob(){return matchMedia("(max-width:700px)").matches}function wrap(s){var o=[],c="";s.split(" ").forEach(function(w){if(c&&(c+" "+w).length>11){o.push(c);c=w}else c=c?c+" "+w:w});o.push(c);return o}
+function col(v){return v>=4?"var(--g)":v>=2?"var(--a)":"var(--r)"}
+function stat(v){return v>=4?"Complied":v>=2?"Partial":"Not complied"}
+function sev(v,t){if(v>=4)return"";if(t=="S")return"Low";return v<=1?"Critical":v==2?"High":"Medium"}
+function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+function areaScores(p){return AREAS.map(function(_,a){var w=0,t=0;Q.forEach(function(q,i){if(q[0]==a){w+=q[2];t+=q[2]*p.s[i]}});return t/w})}
+function shown(){return pl.filter(function(p){return flt=="All"||p.ty==flt})}
+function drawList(){var c=document.getElementById("chips"),cs=c.scrollLeft;c.innerHTML="";["All","Solar","Wind","Hybrid","Storage"].forEach(function(t){var b=document.createElement("button");b.className="chip"+(t==flt?" on":"");b.textContent=t;b.onclick=function(){flt=t;var s=shown();if(s.indexOf(sel)<0)sel=s[0];drawAll()};c.appendChild(b)});
+ c.scrollLeft=cs;var l=document.getElementById("list"),sl=l.scrollLeft;l.innerHTML="";shown().forEach(function(p,i){var b=document.createElement("button");b.className="pl"+(p==sel?" on":"");
+ b.innerHTML='<div class="t"><span>'+(i+1)+". "+p.n+'</span><span style="color:'+col(p.f)+'">'+p.f.toFixed(2)+'</span></div><div class="m">'+p.ty+" · "+p.st+" · "+p.mw+" MW · "+p.tier+'</div><div class="bar"><i style="width:'+p.f/5*100+"%;background:"+col(p.f)+'"></i></div>';
+ b.onclick=function(){sel=p;hlA=-1;drawAll()};l.appendChild(b)});l.scrollLeft=sl}
+function drawKpi(){var s=sel.s,ok=0,cr=0;Q.forEach(function(q,i){if(s[i]>=4)ok++;if(sev(s[i],q[3])=="Critical")cr++});
+ document.getElementById("pn").textContent=sel.n+" · "+sel.ty+" · "+sel.mw+" MW";
+ document.getElementById("kp").innerHTML=[[sel.f.toFixed(2)+" / 5","Final score"],[Math.round(sel.f/5*100)+"%","Compliance index"],[sel.tier+(sel.cap?" *":""),"Maturity tier"],[ok+" / 15","Parameters complied"],[cr,"Critical gaps"]].map(function(x){return"<div><b>"+x[0]+"</b><span>"+x[1]+"</span></div>"}).join("")+(sel.cap?'<p class="note" style="grid-column:1/-1;margin:0">* Capped at L3: a Must Have parameter scores 0.</p>':"")}
+function drawTable(){var h="<tr><th>#</th><th class=x>Control area</th><th>Parameter</th><th class=x>Req.</th><th class=x>Wt</th><th>Score</th><th class=x>Status</th><th>Gap</th><th class=x>Pts</th></tr>";
+ Q.forEach(function(q,i){var v=sel.s[i],sv=sev(v,q[3]),sc="";for(var k=1;k<=5;k++)sc+='<i style="background:'+(k<=v?col(v):"")+'"></i>';
+ h+='<tr class="'+(hlA==q[0]?"hl":"")+'"><td>'+(i+1)+'</td><td class="x">'+AREAS[q[0]]+'</td><td>'+q[1]+'<span class="ar">'+AREAS[q[0]]+(q[3]=="M"?"":" · Should have")+'</span></td><td class="x">'+(q[3]=="M"?"Must":"Should")+'</td><td class="x">'+q[2]+'</td><td style="white-space:nowrap"><span class="sc">'+sc+'</span> '+v+'</td><td class="x"><span class="b" style="background:'+col(v)+'">'+stat(v)+'</span></td><td>'+(sv?'<span class="b" style="background:'+(sv=="Critical"?"var(--r)":sv=="High"?"#e0661a":sv=="Medium"?"var(--a)":"#6b7a90")+'">'+sv+'</span>':"–")+'</td><td class="x">'+(q[2]*v/5).toFixed(1)+"/"+q[2]+'</td></tr>'});
+ h+='<tr class="tot"><th colspan="9">Total: '+sel.f.toFixed(2)+" / 5 · "+(sel.f*20).toFixed(1)+" / 100</th></tr>";document.getElementById("tb").innerHTML=h}
+function drawRadar(){var s=shown(),labels,d,avg;
+ if(mode=="a"){labels=mob()?AREAS.map(wrap):AREAS;d=areaScores(sel);var m=s.map(areaScores);avg=AREAS.map(function(_,i){return m.reduce(function(a,r){return a+r[i]},0)/m.length})}
+ else{labels=Q.map(function(q,i){return mob()?String(i+1):(i+1)+". "+q[1].split(",")[0].split(" (")[0]});d=sel.s;avg=Q.map(function(_,i){return s.reduce(function(a,p){return a+p.s[i]},0)/s.length})}
+ var tc=css("--tx"),gc=css("--grid"),mu=css("--mu"),ac=css("--ac");
+ var data={labels:labels,datasets:[{label:sel.n,data:d,backgroundColor:ac+"44",borderColor:ac,borderWidth:2,pointBackgroundColor:d.map(col).map(function(c){return css(c.slice(4,-1))}),pointRadius:mob()?4:5,pointHitRadius:16,pointHoverRadius:8},
+ {label:"Average (shown plants)",data:avg,borderColor:mu,borderWidth:1.5,pointRadius:0,backgroundColor:"transparent"},
+ {label:"Threshold (4)",data:labels.map(function(){return 4}),borderColor:css("--g"),borderDash:[5,4],borderWidth:1.5,pointRadius:0,backgroundColor:"transparent"}]};
+ var o={responsive:true,maintainAspectRatio:false,layout:{padding:mob()?4:8},scales:{r:{min:0,max:5,ticks:{stepSize:1,color:mu,backdropColor:"transparent"},grid:{color:gc},angleLines:{color:gc},pointLabels:{color:tc,font:{size:mob()?(mode=="a"?10:11):(mode=="a"?11:9)}}}},
+ plugins:{legend:{position:mob()?"bottom":"top",labels:{color:tc,boxWidth:12,font:{size:mob()?11:12}}},tooltip:{callbacks:{label:function(c){return c.dataset.label+": "+c.parsed.r.toFixed(2)}}}},
+ onClick:function(e,el){if(el.length){var i=el[0].index;hlA=mode=="a"?i:Q[i][0];drawTable()}}};
+ if(ch)ch.destroy();ch=new Chart(document.getElementById("rc"),{type:"radar",data:data,options:o})}
+function drawAll(){drawList();drawKpi();drawRadar();drawTable()}
+document.getElementById("ba").onclick=function(){mode="a";this.className="on";document.getElementById("bp").className="";drawRadar()};
+document.getElementById("bp").onclick=function(){mode="p";this.className="on";document.getElementById("ba").className="";drawRadar()};
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",drawAll);matchMedia("(max-width:700px)").addEventListener("change",drawAll);
+drawAll();
+</script></body></html>
